@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- CDN BOOTSTRAP -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <!-- FONT AWESOME CDN -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+      <!-- CSS -->
+      <link rel="stylesheet" href="../style.css">
+      <!-- GOOGLE FONT -->
+      <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+      <!-- FONT RALEWAY REGULAR 400 -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab:wght@300&family=Rubik:ital,wght@1,300&display=swap" rel="stylesheet">
+      <!-- Javascript -->
+      <script src="../script/script.js"></script>
+      <!-- Script map -->
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJcZYnP_8YXijD1IERLLrcasHfqgrSPeY&callback=myMap" id="wpsl-gmap-js"></script>
+      <!-- Script Chatbot -->
+      <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "44dbcff8-84e2-42cf-912a-2a24cfc90ac1", // The ID of this integration.
+          region: "au-syd", // The region your integration is hosted in.
+          serviceInstanceID: "db9d83a2-23e4-4442-8228-8358b1f9fad6", // The ID of your service instance.
+          onLoad: async (instance) => { await instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+      </script>
+    <title>LOCATE US</title>
+</head>
+ <!-- NAVBAR -->
+ <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid" id="navbar">
+      <img src="/img/homepage/logo.png" alt="logo" width="100px;">
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../menu/index.html">MENU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../gallery/index.html">GALLERY</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../promotion/index.html">PROMOTION</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="color:#000;"aria-current="page" href="locate/index.html">LOCATE US</a>
+          </li>
+        </ul>
+      </div>
+      <div class="button">
+        <a href="https://www.facebook.com/p/Solaria-Indonesia-100057582874563/" target="_blank" rel="noopener"><button style='font-size:22px;background-color: #42a5f5;'><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i></button></a>
+
+        <a href="https://www.instagram.com/solaria.indonesia/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" target="_blank" ><button style='font-size:22px;background-color:#f44336;'><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></button> </a>
+        <a href="https://x.com/SolariaID?s=20"><button style='font-size:22px;background-color: #000000;'><i class="fa-brands fa-x-twitter" style="color: #ffffff;"></i></button></a>
+    </div>
+    </div>
+  </nav>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <div id="wpsl-gmap" class="wpsl-gmap-canvas"></div>
+            <div id="wpsl-result-list">
+              <div id="locations-list" class="overflow-scroll" style=" display: flex;flex-direction: column;min-height: 100px;">
+                <h2>Lokasi :</h2>
+                <ul></ul>
+              </div>
+            </div>
+
+            </div>
+          
+            <div class="col-8">
+              <div id="googleMap" style="width:100%;height:400px;"></div>
+              <script>
+                var solariaLocations = [
+                  {
+                    name: 'Solaria - Golden City Bekasi',
+                    location: 'Restaurant',
+                    address: 'Jl. Nusantara Raya, RT.001/RW.033, Tlk. Pucung, Kec. Bekasi Utara, Kota Bks, Jawa Barat 17121',
+                    lat: -6.20772,
+                    lng:  107.02121
+                  },
+                  {
+                    name: 'Solaria @ Rest Area KM19',
+                    location: 'Restaurant',
+                    address: 'Q3J8+58R, P2HQ+QG4Jl. WarengLambangsari, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510',
+                    lat: -6.2195,
+                    lng: 107.0658
+                  },
+                  {
+                    name: 'Solaria - Kaliabang',
+                    location: 'Dapur Umum',
+                    address: 'Q2RC+VF, RT.001/RW.033, Tlk. Pucung, Kec. Bekasi Utara, Kota Bks, Jawa Barat 17121',
+                    lat: -6.20690,
+                    lng: 107.02024
+                  },
+                  {
+                    name: 'Solaria - Transmart Juanda',
+                    location: 'Restoran',
+                    address: 'Solaria Transmart Juanda, Jl. Insinyur H. Juanda, RT.003/RW.011, Margahayu, Kec. Bekasi Tim., Kota Bks, Jawa Barat 17113',
+                    lat: -6.24965,
+                    lng: 107.01687
+                  },
+                  {
+                    name: 'Solaria - Transmart Juanda',
+                    location: 'Restoran',
+                    address: 'Solaria Transmart Juanda, Jl. Insinyur H. Juanda, RT.003/RW.011, Margahayu, Kec. Bekasi Tim., Kota Bks, Jawa Barat 17113',
+                    lat: -6.24965,
+                    lng: 107.01687
+                  },
+                  {
+                    name: 'Solaria - Summarecon Mall Bekasi',
+                    location: 'Restoran',
+                    address: 'Downtown, Summarecon Mall Bekasi, Jalan Boulevard Raya, RT.006/RW.002, Marga Mulya, Kec. Bekasi Utara, Kota Bks, Jawa Barat 17142',
+                    lat: -6.22575,
+                    lng: 107.00045
+                  },
+                  {
+                    name: 'Solaria - La Terrazza Summarecon Bekasi',
+                    location: 'Restoran',
+                    address: 'Summarecon Mall Bekasi, Jl. Boulevard Ahmad Yani, Marga Mulya, Kec. Bekasi Utara, Kota Bks, Jawa Barat 17142',
+                    lat: -6.22714,
+                    lng: 106.99727
+                  },
+                  {
+                    name: 'Solaria - Metropolitan Mall 2',
+                    location: 'Restoran',
+                    address: 'Solaria Metropolitan Mall 2, Jl. KH. Noer Ali, RT.008/RW.002, Pekayon Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17148',
+                    lat: -6.24843,
+                    lng: 106.99096
+                  },
+                  {
+                    name: 'Solaria - Bekasi Cyber Park',
+                    location: 'Restoran',
+                    address: 'Solaria, Bks Cyber Park, Jl. Ahmad Yani, Kayuringin Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17144',
+                    lat: -6.24651,
+                    lng: 106.99187
+                  },
+                  {
+                    name: 'Solaria - Mega Bekasi Hypermall',
+                    location: 'Restoran',
+                    address: 'Solaria Mega Bekasi Hypermall Lantai Lantai UG, Jl. Ahmad Yani No.1, RT.004/RW.001, Marga Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17141',
+                    lat: -6.24960,
+                    lng: 106.9928
+                  },
+                  {
+                    name: 'Solaria - Blu Plaza',
+                    location: 'Restoran',
+                    address: 'Lt Dasar Solaria Blu Plaza, Jl. Chairil Anwar No.27-36, RT.006/RW.009, Margahayu, Kec. Bekasi Tim., Kota Bks, Jawa Barat 17113',
+                    lat: -6.25590,
+                    lng: 107.00869
+                  },
+                  {
+                    name: 'Restaurant Solaria',
+                    location: 'Restoran',
+                    address: 'Metropolitan Mall Lantai 3,, Jalan Jend Ahmad Yani, RT.008/RW.002, Pekayon Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17148',
+                    lat: -6.24861,
+                    lng: 106.99057
+                  },
+                  {
+                    name: 'Solaria Giant Bekasi',
+                    location: 'Restoran',
+                    address: 'QX2R+6XP, RT.004/RW.001, Marga Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17141',
+                    lat: -6.24940,
+                    lng: 106.99247
+                  },
+                  {
+                    name: 'Solaria - Revo Mall',
+                    location: 'Restoran',
+                    address: 'Revo Mall, Jl. Ahmad Yani, Pekayon Jaya, Kec. Bekasi Sel., Kota Beaksi, Jawa Barat 17148',
+                    lat: -6.25457,
+                    lng: 106.99008
+                  },
+                  {
+                    name: 'Solaria - Grand Metropolitan Bekasi',
+                    location: 'Restoran',
+                    address: 'Mall Grand Metropolitan, Jl. KH. Noer Ali, RT.007/RW.003, Pekayon Jaya, Kec. Bekasi Sel., Bekasi Barat, Jawa Barat 17148',
+                    lat: -6.24945,
+                    lng: 106.98468
+                  },
+                  {
+                    name: 'Solaria - Naga Tambun',
+                    location: 'Restoran',
+                    address: 'Jl. Kp. Kedung Gede No.KM 39, Setiamekar, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510',
+                    lat: -6.25876,
+                    lng: 107.05087
+                  },
+                  {
+                    name: 'Solaria - Lagoon Avenue Mall',
+                    location: 'Restoran',
+                    address: 'Solaria Lagoon Avenue Mall, Jl. Cikas Tim., Pekayon Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17148',
+                    lat: -6.25239,
+                    lng: 106.97884
+                  },
+                  {
+                    name: 'Solaria - Kota Harapan Indah',
+                    location: 'Restoran',
+                    address: 'Jl. Harapan Indah No.Blok 2N, RT.003/RW.007, Medan Satria, Kecamatan Medan Satria, Kota Bks, Jawa Barat 17132',
+                    lat: -6.190110,
+                    lng: 106.97593
+                  },
+                  {
+                    name: 'Solaria - Naga Swalayan Pekayon',
+                    location: 'Restoran',
+                    address: 'Jl. Raya Pekayon No.29, RT.001/RW.020, Pekayon Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17148',
+                    lat: -6.26437,
+                    lng:  106.98694
+                  },
+                  {
+                    name: 'Solaria - Sultan Agung Pondok Ungu',
+                    location: 'Restoran',
+                    address: 'Jl. Sultan Agung No.km 27 No. 2, Medan Satria, Kecamatan Medan Satria, Kota Bks, Jawa Barat 17132',
+                    lat: -6.19848,
+                    lng:   106.97521
+                  },
+                  {
+                    name: 'Solaria Metland Tambun',
+                    location: 'Restoran',
+                    address: 'Solaria @Hom Hotel Cibitung, Jl. Pintu Keluar Utama No.Blok A, Tambun, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510',
+                    lat: -6.26545,
+                    lng:   107.07279
+                  },
+                  {
+                    name: 'Solaria - Grand Kota Bintang',
+                    location: 'Restoran',
+                    address: 'QX24+RP, Jakasampurna, Kec. Bekasi Bar., Kota Bks, Jawa Barat 17145',
+                    lat: -6.24795,
+                    lng:  106.95682
+                  },
+                  {
+                    name: 'Solaria - Grand Wisata Bekasi',
+                    location: 'Restoran',
+                    address: 'Burgerking Grand Wisata, Lambangsari, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510',
+                    lat: -6.27685,
+                    lng:  107.04488
+                  },
+                  {
+                    name: 'Solaria - Grand Galaxy Park',
+                    location: 'Restoran',
+                    address: 'Grand Galaxy Park, Solaria, Jl. Grand Galaxy City Central Park 3 Jl. Boulevard Raya No.1, RT.003/RW.017, Jaka Setia, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17147',
+                    lat: -6.27125,
+                    lng:  106.97200
+                  },
+                  {
+                    name: 'Solaria Rest Area KM 19A',
+                    location: 'Restoran',
+                    address: 'P2JP+GM7, Lambangsari, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510',
+                    lat: -6.26882,
+                    lng:  107.03669
+                  },
+                  {
+                    name: 'Solaria Rest Area KM 19B',
+                    location: 'Restoran',
+                    address: 'P2HQ+QG4, Jl. Wareng, Lambangsari, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510',
+                    lat: -6.27071,
+                    lng:  107.03901
+                  },
+                  {
+                    name: 'Solaria - AEON Mall Jakarta Garden City',
+                    location: 'Restoran',
+                    address: 'Jakarta Garden City, Aeon Mall, Jl. Jkt Garden City Boulevard, RT.8/RW.6, Cakung Tim., Kec. Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13910',
+                    lat: -6.17262,
+                    lng:  106.95397
+                  },
+                  {
+                    name: 'Solaria - Lulu Hypermart & Departement Store - Plaza Taman',
+                    location: 'Restoran',
+                    address: 'Lulu Hypermarket & Department Store - Plaza Taman, Solaria Jl. Raya Bekasi No.KM.24, Ujung Menteng, Kec. Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13960',
+                    lat: -6.18611,
+                    lng:  106.94863
+                  },
+                  {
+                    name: 'Solaria - Lotte Grosir Cikarang',
+                    location: 'Restoran',
+                    address: 'Jl. Kp. Pilar, Cikarang Kota, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530',
+                    lat: -6.25897,
+                    lng:  107.15739
+                  },
+                  {
+                    name: 'Solaria - Radin Inten',
+                    location: 'Restoran',
+                    address: 'Jl. Radin Inten II No.2, RT.8/RW.15, Duren Sawit, Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13440',
+                    lat: -6.22113,
+                    lng:  106.92373
+                  },
+                  {
+                    name: 'Solaria - Buaran Plaza',
+                    location: 'Restoran',
+                    address: 'Buaran Plaza, Jl. Raden Intan Raya No.8, RT.8/RW.14, Klender, Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13470',
+                    lat: -6.21814,
+                    lng:  106.92402
+                  },
+                  {
+                    name: 'Solaria - Rest Area KM 6B Tol Bekasi',
+                    location: 'Restoran',
+                    address: 'RT.008/RW.004, Jatibening Baru, Kec. Pd. Gede, Kota Bks, Jawa Barat',
+                    lat: -6.25882,
+                    lng:  106.92746
+                  },
+                  {
+                    name: 'Solaria - Living Plaza Jababeka',
+                    location: 'Restoran',
+                    address: 'Solaria Living Plaza Jababeka, Jl. Niaga Raya, Mekarmukti, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530',
+                    lat:-6.29959,
+                    lng: 107.15039
+                  },
+                  {
+                    name: 'Solaria - Jatiwaringin',
+                    location: 'Restoran',
+                    address: 'Jl. Raya Jatiwaringin No.261, RT.001/RW.009, Jaticempaka, Kec. Pd. Gede, Kota Bks, Jawa Barat 17411',
+                    lat:-6.27226,
+                    lng: 106.91211
+                  },
+                  {
+                    name: 'Solaria - Chadstone Mall Cikarang',
+                    location: 'Restoran',
+                    address: 'Solaria Chadstone, Mall Cikarang, Jl. Raya Cikarang - Cibarusah, Pasirsari, Cikarang Sel., Kabupaten Bekasi, Jawa Barat 17530',
+                    lat:-6.31272,
+                    lng: 107.14125
+                  },
+                  {
+                    name: 'Solaria - Naga Swalayan Hankam',
+                    location: 'Restoran',
+                    address: 'Solaria Naga Swalayan, Jl. Raya Hankam, Jatirahayu, Kec. Pd. Melati, Kota Bks, Jawa Barat 17414',
+                    lat: -6.29570,
+                    lng: 106.92112
+                  },
+                  {
+                    name: 'Solaria Resto',
+                    location: 'Restoran',
+                    address: 'Mall Klender, 4, Jl. I Gusti Ngurah Rai No.6, RT.4/RW.6, Klender, Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13470',
+                    lat: -6.21405,
+                    lng: 106.90339
+                  },
+                  {
+                    name: 'Solaria - Hollywood Junction Jababeka',
+                    location: 'Restoran',
+                    address: 'Solaria Hollywood Junction Jababeka Unit GF 10 Jl Usman, Jl. H.Usmar Ismail Jl. Jababeka Raya, Mekarmukti, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17530',
+                    lat: -6.29279,
+                    lng: 107.17103
+                  },
+                  {
+                    name: 'Solaria - Summarecon Mall Kelapa Gading',
+                    location: 'Restoran',
+                    address: 'Solaria Summarecon Mall Kelapa Gading Lantai 2, Jl. Boulevard Raya, Klp. Gading Tim., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240',
+                    lat: -6.15672,
+                    lng:  106.91027
+                  },
+                  {
+                    name: 'Solaria - Plaza Pondok Gede',
+                    location: 'Restoran',
+                    address: 'Plaza Pd. Gede, Solaria, Jl. Raya Pd. Gede, RT.001/RW.001, Jatiwaringin, Kec. Pd. Gede, Kota Bks, Jawa Barat 17411',
+                    lat: -6.28313,
+                    lng: 106.91166
+                  },
+                  {
+                    name: 'Solaria - Arion Mall',
+                    location: 'Restoran',
+                    address: 'Solaria Arion Mall Lantai GF, Jl. Pemuda No.4, RT.2/RW.7, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13320',
+                    lat: -6.19388,
+                    lng: 106.89049
+                  },
+                  {
+                    name: 'Solaria - City Walk Lippo Cikarang',
+                    location: 'Restoran',
+                    address: 'Solaria Citywalk Lippo Cikarang, Jl. MH. Thamrin, Cibatu, Cikarang Sel., Jawa Barat 17550',
+                    lat: -6.32839,
+                    lng: 107.12793
+                  },
+                  {
+                    name: 'Solaria - Mall Cipinang Indah',
+                    location: 'Restoran',
+                    address: 'Mall Cipinang Indah, Jl. Raya Kalimalang No.Kav.88, RT.18/RW.3, Pd. Bambu, Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13430',
+                    lat: -6.23990,
+                    lng: 106.89421
+                  },
+                  {
+                    name: 'Solaria - Pemuda Rawamangun',
+                    location: 'Restoran',
+                    address: 'Jl. Pemuda, RT.6/RW.1, Jatinegara Kaum, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13250',
+                    lat: -6.19385,
+                    lng: 106.90256
+                  },
+                  {
+                    name: 'Solaria - Mall @ Bassura City',
+                    location: 'Restoran',
+                    address: 'Solaria Mall @ Bassura City, Blk. A No.26, RT.13/RW.9, Rawasari, Kec. Cemp. Putih, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13570',
+                    lat: -6.22436,
+                    lng: 106.87798
+                  },
+                  {
+                    name: 'Solaria - Mall Artha Gading',
+                    location: 'Restoran',
+                    address: 'Mall Artha Gading, Solaria Jl. Artha Gading Sel. No.1, RT.18/RW.8, Klp. Gading Bar., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240',
+                    lat: -6.14608,
+                    lng: 106.89205
+                  },
+                  {
+                    name: 'Solaria - Mall of Indonesia',
+                    location: 'Restoran',
+                    address: 'Mall Of Indonesia, Jl. Boulevard Bar. Raya No.1, Klp. Gading Bar., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240',
+                    lat: -6.15127,
+                    lng: 106.89174
+                  },
+                  {
+                    name: 'Solaria - Mall Lippo Cikarang',
+                    location: 'Restoran',
+                    address: 'Jl. MH. Thamrin No.28a, Cibatu, Cikarang Sel., Kabupaten Bekasi, Jawa Barat 17530',
+                    lat: -6.33433,
+                    lng: 107.13614
+                  },
+                  {
+                    name: 'Solaria - Koja Trade Mall',
+                    location: 'Restoran',
+                    address: 'Jl. Kramat Jaya Raya No.30, Tugu Utara, Kec. Koja, Jkt Utara, Daerah Khusus Ibukota Jakarta 14260',
+                    lat: -6.12260,
+                    lng: 106.91578
+                  },
+                  {
+                    name: 'Solaria - Green Terrace TMII',
+                    location: 'Restoran',
+                    address: 'Solaria Green Terrace TMII Jl, Pintu 1 Tmii No.1, Ceger, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13820',
+                    lat: -6.30288,
+                    lng: 106.88530
+                  },
+                  {
+                    name: 'Sosialita by Solaria - Mall Kelapa Gading',
+                    location: 'Restoran',
+                    address: 'Mall Klp. Gading, Gading, Jl. Boulevard Raya, Klp. Gading Tim., Gading Timur, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240',
+                    lat: -6.15858,
+                    lng: 106.90756
+                  },
+                  {
+                    name: 'Solaria - Green Pramuka Square Mall',
+                    location: 'Restoran',
+                    address: 'Solaria Green Pramuka Square Mall, Jl. Jenderal Ahmad Yani No.Kav 49, RT.13/RW.9, Rawasari, Kec. Cemp. Putih, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10570',
+                    lat:-6.18935,
+                    lng: 106.87436
+                  },
+                  {
+                    name: 'Solaria Halim Perdana Kusuma',
+                    location: 'Restoran',
+                    address: 'Unnamed Road, RT.1/RW.9, Halim Perdana Kusumah, Makasar, East Jakarta City, Jakarta 13610',
+                    lat:-6.26474,
+                    lng:  106.88598
+                  },
+                  {
+                    name: 'Solaria - ITC Cempaka Mas',
+                    location: 'Restoran',
+                    address: 'Solaria ITC Cempaka Mas, Jl. Letjen Suprapto No.Kav.1, RW.8, Sumur Batu, Kec. Kemayoran, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10640',
+                    lat: -6.16435,
+                    lng: 106.87768
+                  },
+                  {
+                    name: 'Solaria - Tamini Square',
+                    location: 'Restoran',
+                    address: 'Solaria Tamini Square Lantai 1 Jalan, Pintu 1 Tmii No.15, Pinang Ranti, Kec. Makasar, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13560',
+                    lat: -6.29059,
+                    lng: 106.88146
+                  },
+                  {
+                    name: 'Solaria - Rumah Sakit Polri',
+                    location: 'Restoran',
+                    address: 'Solaria Rumah Sakit Polri, Jl. Rs. Polri No.5, RT.1/RW.5, Kramat Jati, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13510',
+                    lat: -6.26900,
+                    lng: 106.86973
+                  },
+                  {
+                    name: 'Solaria - Grand Meikarta District 1',
+                    location: 'Restoran',
+                    address: 'Grand Meikarta District 1, Jl. Orange County Boulevard, Cibatu, Cikarang Sel., Kabupaten Bekasi, Jawa Barat 17530',
+                    lat: -6.33894,
+                    lng: 107.16684
+                  },
+                  {
+                    name: 'Solaria',
+                    location: 'Restoran',
+                    address: 'Jl. Taman Mini I No.3, RT.3/RW.2, Pinang Ranti, Kec. Makasar, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13560',
+                    lat: -6.33894,
+                    lng: 107.16684
+                  },
+                  {
+                    name: 'Solaria - Kota Kasablanka',
+                    location: 'Restoran',
+                    address: 'Jl. Raya Casablanca No.Raya, RT.14/RW.5, Menteng Dalam, Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12870',
+                    lat: -6.2242,
+                    lng: 106.84273
+                  },
+                  {
+                    name: 'Solaria - Tebet Indraya Square ( TIS )',
+                    location: 'Restoran',
+                    address: 'Solaria Tebet Indraya Square, Jl. Letjen M.T. Haryono No.Kav 8, RT.6/RW.9, Tebet Bar., Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810',
+                    lat: -6.24259,
+                    lng:  106.84850
+                  },
+                  {
+                    name: 'Solaria - Kalibata City Square',
+                    location: 'Restoran',
+                    address: 'Solaria Mall Kalibata City Square, Jl. Raya Kalibata No.1, Rawajati, Kec. Pancoran, Daerah Khusus Ibukota Jakarta 12750',
+                    lat: -6.25638,
+                    lng:  106.85201
+                  },
+                  // Tambahkan lokasi lain jika diperlukan
+                ];
+              
+               
+              
+                function myMap() {
+                  map = new google.maps.Map(document.getElementById('googleMap'), {
+                    zoom: 14,
+                    center: { lat: -6.198028786129111, lng: 107.02125659456654 }
+                  });
+              
+                  // Tambahkan marker dan informasi untuk setiap lokasi
+                  for (var i = 0; i < solariaLocations.length; i++) {
+                    var location = solariaLocations[i];
+              
+                    // Tambahkan marker
+                    var marker = new google.maps.Marker({
+                      position: { lat: location.lat, lng: location.lng },
+                      map: map,
+                      title: location.name
+                    });
+              
+                    // Tambahkan informasi ke daftar lokasi sebagai tombol
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                      <button onclick="goToLocation(${location.lat}, ${location.lng})">
+                        <strong>${location.name}</strong><br>
+                        ${location.address}<br>
+                        ${location.location}
+                      </button>
+                    `;
+                    document.getElementById('locations-list').appendChild(listItem);
+                  }
+                }
+              
+                // Fungsi untuk memindahkan peta ke lokasi yang dipilih
+                function goToLocation(lat, lng) {
+                  map.setCenter({ lat: lat, lng: lng }); // Mengatur pusat peta ke koordinat yang diberikan
+                  map.setZoom(16); // Mengatur zoom peta (opsional)
+                }
+              
+                myMap();
+              </script>           
+             
+            </div>
+        </div>
+      </div>
+</body>
+</html>
